@@ -90,6 +90,30 @@ class HTTPControllerTests: XCTestCase {
         // TODO: test the rest to make sure this really is the correct result
     }
 
+    func testTransmissionFailure() {
+        let sessionMock = URLSessionMock()
+        sessionMock.error = NSError()
+
+        let httpController = HTTPController(session: sessionMock)
+
+        var processedResult: Result<NutritionRequest.ResponseType, HTTPError>?
+
+        let nutritionRequest = NutritionRequest()
+
+        httpController.process(nutritionRequest) { result in
+            processedResult = result
+        }
+
+        switch processedResult {
+        case .success:
+            XCTFail("Success result received by should have been a transmission error")
+        case .failure(let error):
+            XCTAssertEqual(error, .transmissionFailure)
+        case .none:
+            XCTFail("Empty failure received by should have been a transmission error")
+        }
+    }
+
     func testFailureBadRequest() {
         let sessionMock = URLSessionMock()
         sessionMock.response = HTTPURLResponse(url: URL(string: "http://test.url")!,
@@ -114,6 +138,33 @@ class HTTPControllerTests: XCTestCase {
             XCTAssertEqual(error, .badRequest)
         case .none:
             XCTFail("Empty failure received by should have been Bad Request")
+        }
+    }
+
+    func testFailureNotFound() {
+        let sessionMock = URLSessionMock()
+        sessionMock.response = HTTPURLResponse(url: URL(string: "http://test.url")!,
+                                               statusCode: 404,
+                                               httpVersion: nil,
+                                               headerFields: nil)
+
+        let httpController = HTTPController(session: sessionMock)
+
+        var processedResult: Result<NutritionRequest.ResponseType, HTTPError>?
+
+        let nutritionRequest = NutritionRequest()
+
+        httpController.process(nutritionRequest) { result in
+            processedResult = result
+        }
+
+        switch processedResult {
+        case .success:
+            XCTFail("Success result received by should have been Not Found")
+        case .failure(let error):
+            XCTAssertEqual(error, .notFound)
+        case .none:
+            XCTFail("Empty failure received by should have been Not Found")
         }
     }
 
