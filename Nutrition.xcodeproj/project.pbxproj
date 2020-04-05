@@ -14,6 +14,9 @@
 		E77D01B5243A19210094A3EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E77D01B4243A19210094A3EB /* Assets.xcassets */; };
 		E77D01B8243A19210094A3EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E77D01B6243A19210094A3EB /* LaunchScreen.storyboard */; };
 		E77D01C3243A19220094A3EB /* NutritionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77D01C2243A19220094A3EB /* NutritionTests.swift */; };
+		E77D01CF243A19C90094A3EB /* HTTPControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77D01CE243A19C90094A3EB /* HTTPControllerTests.swift */; };
+		E77D01D1243A19DD0094A3EB /* HTTPController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77D01D0243A19DD0094A3EB /* HTTPController.swift */; };
+		E77D01D5243A1CD00094A3EB /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77D01D4243A1CD00094A3EB /* Requests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,9 @@
 		E77D01BE243A19220094A3EB /* NutritionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NutritionTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E77D01C2243A19220094A3EB /* NutritionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionTests.swift; sourceTree = "<group>"; };
 		E77D01C4243A19220094A3EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E77D01CE243A19C90094A3EB /* HTTPControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPControllerTests.swift; sourceTree = "<group>"; };
+		E77D01D0243A19DD0094A3EB /* HTTPController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPController.swift; sourceTree = "<group>"; };
+		E77D01D4243A1CD00094A3EB /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +85,7 @@
 		E77D01AA243A19180094A3EB /* Nutrition */ = {
 			isa = PBXGroup;
 			children = (
+				E77D01D3243A1A7C0094A3EB /* Rest */,
 				E77D01AB243A19180094A3EB /* AppDelegate.swift */,
 				E77D01AD243A19180094A3EB /* SceneDelegate.swift */,
 				E77D01AF243A19180094A3EB /* ViewController.swift */,
@@ -93,10 +100,28 @@
 		E77D01C1243A19220094A3EB /* NutritionTests */ = {
 			isa = PBXGroup;
 			children = (
+				E77D01CD243A19A40094A3EB /* Rest */,
 				E77D01C2243A19220094A3EB /* NutritionTests.swift */,
 				E77D01C4243A19220094A3EB /* Info.plist */,
 			);
 			path = NutritionTests;
+			sourceTree = "<group>";
+		};
+		E77D01CD243A19A40094A3EB /* Rest */ = {
+			isa = PBXGroup;
+			children = (
+				E77D01CE243A19C90094A3EB /* HTTPControllerTests.swift */,
+			);
+			path = Rest;
+			sourceTree = "<group>";
+		};
+		E77D01D3243A1A7C0094A3EB /* Rest */ = {
+			isa = PBXGroup;
+			children = (
+				E77D01D0243A19DD0094A3EB /* HTTPController.swift */,
+				E77D01D4243A1CD00094A3EB /* Requests.swift */,
+			);
+			path = Rest;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -109,6 +134,7 @@
 				E77D01A4243A19180094A3EB /* Sources */,
 				E77D01A5243A19180094A3EB /* Frameworks */,
 				E77D01A6243A19180094A3EB /* Resources */,
+				E77D01D2243A1A490094A3EB /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -195,6 +221,26 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		E77D01D2243A1A490094A3EB /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		E77D01A4243A19180094A3EB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -203,6 +249,8 @@
 				E77D01B0243A19180094A3EB /* ViewController.swift in Sources */,
 				E77D01AC243A19180094A3EB /* AppDelegate.swift in Sources */,
 				E77D01AE243A19180094A3EB /* SceneDelegate.swift in Sources */,
+				E77D01D5243A1CD00094A3EB /* Requests.swift in Sources */,
+				E77D01D1243A19DD0094A3EB /* HTTPController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +259,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E77D01C3243A19220094A3EB /* NutritionTests.swift in Sources */,
+				E77D01CF243A19C90094A3EB /* HTTPControllerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
