@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		E77D01AC243A19180094A3EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77D01AB243A19180094A3EB /* AppDelegate.swift */; };
 		E77D01AE243A19180094A3EB /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77D01AD243A19180094A3EB /* SceneDelegate.swift */; };
-		E77D01B0243A19180094A3EB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77D01AF243A19180094A3EB /* ViewController.swift */; };
+		E77D01B0243A19180094A3EB /* NutritionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77D01AF243A19180094A3EB /* NutritionViewController.swift */; };
 		E77D01B3243A19180094A3EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E77D01B1243A19180094A3EB /* Main.storyboard */; };
 		E77D01B5243A19210094A3EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E77D01B4243A19210094A3EB /* Assets.xcassets */; };
 		E77D01B8243A19210094A3EB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E77D01B6243A19210094A3EB /* LaunchScreen.storyboard */; };
@@ -18,6 +18,9 @@
 		E77D01D1243A19DD0094A3EB /* HTTPController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77D01D0243A19DD0094A3EB /* HTTPController.swift */; };
 		E77D01D5243A1CD00094A3EB /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77D01D4243A1CD00094A3EB /* Requests.swift */; };
 		E77D01D8243A26F80094A3EB /* NutritionApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77D01D7243A26F80094A3EB /* NutritionApiService.swift */; };
+		E77D01DB243A2CED0094A3EB /* NutritionViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77D01DA243A2CED0094A3EB /* NutritionViewInteractor.swift */; };
+		E77D01DD243A2CFD0094A3EB /* NutritionViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77D01DC243A2CFD0094A3EB /* NutritionViewPresenter.swift */; };
+		E7E7F626243A44BB00D0F172 /* NutritionViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E7E7F625243A44BB00D0F172 /* NutritionViewRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,7 +37,7 @@
 		E77D01A8243A19180094A3EB /* Nutrition.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nutrition.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E77D01AB243A19180094A3EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E77D01AD243A19180094A3EB /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		E77D01AF243A19180094A3EB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E77D01AF243A19180094A3EB /* NutritionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionViewController.swift; sourceTree = "<group>"; };
 		E77D01B2243A19180094A3EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E77D01B4243A19210094A3EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E77D01B7243A19210094A3EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -46,6 +49,9 @@
 		E77D01D0243A19DD0094A3EB /* HTTPController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPController.swift; sourceTree = "<group>"; };
 		E77D01D4243A1CD00094A3EB /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		E77D01D7243A26F80094A3EB /* NutritionApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionApiService.swift; sourceTree = "<group>"; };
+		E77D01DA243A2CED0094A3EB /* NutritionViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionViewInteractor.swift; sourceTree = "<group>"; };
+		E77D01DC243A2CFD0094A3EB /* NutritionViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionViewPresenter.swift; sourceTree = "<group>"; };
+		E7E7F625243A44BB00D0F172 /* NutritionViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionViewRouter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,7 +98,6 @@
 				E77D01D3243A1A7C0094A3EB /* Rest */,
 				E77D01AB243A19180094A3EB /* AppDelegate.swift */,
 				E77D01AD243A19180094A3EB /* SceneDelegate.swift */,
-				E77D01AF243A19180094A3EB /* ViewController.swift */,
 				E77D01B1243A19180094A3EB /* Main.storyboard */,
 				E77D01B4243A19210094A3EB /* Assets.xcassets */,
 				E77D01B6243A19210094A3EB /* LaunchScreen.storyboard */,
@@ -139,6 +144,10 @@
 		E77D01D9243A2C730094A3EB /* NutritionViewModule */ = {
 			isa = PBXGroup;
 			children = (
+				E77D01AF243A19180094A3EB /* NutritionViewController.swift */,
+				E77D01DA243A2CED0094A3EB /* NutritionViewInteractor.swift */,
+				E77D01DC243A2CFD0094A3EB /* NutritionViewPresenter.swift */,
+				E7E7F625243A44BB00D0F172 /* NutritionViewRouter.swift */,
 			);
 			path = NutritionViewModule;
 			sourceTree = "<group>";
@@ -265,11 +274,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E77D01B0243A19180094A3EB /* ViewController.swift in Sources */,
+				E77D01B0243A19180094A3EB /* NutritionViewController.swift in Sources */,
+				E77D01DB243A2CED0094A3EB /* NutritionViewInteractor.swift in Sources */,
+				E7E7F626243A44BB00D0F172 /* NutritionViewRouter.swift in Sources */,
 				E77D01D8243A26F80094A3EB /* NutritionApiService.swift in Sources */,
 				E77D01AC243A19180094A3EB /* AppDelegate.swift in Sources */,
 				E77D01AE243A19180094A3EB /* SceneDelegate.swift in Sources */,
 				E77D01D5243A1CD00094A3EB /* Requests.swift in Sources */,
+				E77D01DD243A2CFD0094A3EB /* NutritionViewPresenter.swift in Sources */,
 				E77D01D1243A19DD0094A3EB /* HTTPController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

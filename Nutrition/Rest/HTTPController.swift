@@ -17,13 +17,13 @@ enum HTTPError: Error {
 }
 
 protocol HTTPURLSession {
-    func urlDataTask(with url: URL,
+    func urlDataTask(with request: URLRequest,
                      completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void)
 }
 
 extension URLSession: HTTPURLSession {
-    func urlDataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
-        dataTask(with: url) { (data, response, error) in
+    func urlDataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
+        dataTask(with: request) { (data, response, error) in
             completionHandler(data, response, error)
         }.resume()
     }
@@ -48,7 +48,7 @@ class HTTPController: HTTPControllerProtocol {
                     completionHandler completion: @escaping (Result<T.ResponseType, HTTPError>) -> Void)
         where T: Request {
 
-            session.urlDataTask(with: request.url) { data, response, error in
+            session.urlDataTask(with: request.request) { data, response, error in
                 guard error == nil else {
                     completion(.failure(.transmissionFailure))
                     return

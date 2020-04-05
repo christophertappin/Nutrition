@@ -19,6 +19,7 @@ protocol Request {
 
     var url: URL { get }
     var path: String { get }
+    var request: URLRequest { get }
     var queryItems: [URLQueryItem] { get }
 
     func response(data: Data) -> ResponseType?
@@ -33,6 +34,12 @@ extension Request {
         urlComponents.queryItems = queryItems
 
         return urlComponents.url!
+    }
+
+    var request: URLRequest {
+        var request = URLRequest(url: url)
+        request.addValue("23863708:465c0554fd00da006338c72e282e939fe6576a25fd00c776c0fbe898c47c9876", forHTTPHeaderField: "Authorization")
+        return request
     }
 }
 

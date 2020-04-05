@@ -14,7 +14,7 @@ enum NutritionAPIError: Error {
 
 protocol NutritionAPIServiceProtocol {
 
-    func getById(id: Int, completion: @escaping (Result<NutritionResponse, NutritionAPIError>) -> Void)
+    func getById(foodId: Int, completion: @escaping (Result<NutritionResponse, NutritionAPIError>) -> Void)
 
 }
 
@@ -22,9 +22,13 @@ class NutritionAPIService: NutritionAPIServiceProtocol {
 
     var httpController: HTTPControllerProtocol?
 
-    func getById(id: Int,
+    init(httpController: HTTPControllerProtocol = HTTPController()) {
+        self.httpController = httpController
+    }
+
+    func getById(foodId: Int,
                  completion: @escaping (Result<NutritionResponse, NutritionAPIError>) -> Void) {
-        let nutritionRequest = NutritionRequest(foodId: id)
+        let nutritionRequest = NutritionRequest(foodId: foodId)
 
         httpController?.process(nutritionRequest) { result in
             switch result {
