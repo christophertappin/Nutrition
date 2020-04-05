@@ -17,6 +17,10 @@ protocol NutritionViewControllerProtocol {
 class NutritionViewController: UIViewController {
     
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var carbValueLabel: UILabel!
+    @IBOutlet weak var proteinValueLabel: UILabel!
+    @IBOutlet weak var fatValueLabel: UILabel!
+    @IBOutlet weak var calorieValueLabel: UILabel!
 
     var presenter: NutritionViewPresenter?
 
@@ -31,12 +35,16 @@ class NutritionViewController: UIViewController {
 
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         if motion == .motionShake {
-
+            presenter?.load()
         }
     }
 
     func setupView() {
         self.titleLabel.text = presenter?.title()
+        self.carbValueLabel.text = presenter?.carbValue()
+        self.proteinValueLabel.text = presenter?.proteinValue()
+        self.fatValueLabel.text = presenter?.fatValue()
+        self.calorieValueLabel.text = presenter?.calorieValue()
     }
 
 }
