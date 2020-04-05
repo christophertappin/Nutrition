@@ -90,4 +90,31 @@ class HTTPControllerTests: XCTestCase {
         // TODO: test the rest to make sure this really is the correct result
     }
 
+    func testFailureBadRequest() {
+        let sessionMock = URLSessionMock()
+        sessionMock.response = HTTPURLResponse(url: URL(string: "http://test.url")!,
+                                               statusCode: 400,
+                                               httpVersion: nil,
+                                               headerFields: nil)
+
+        let httpController = HTTPController(session: sessionMock)
+
+        var processedResult: Result<NutritionRequest.ResponseType, HTTPError>?
+
+        let nutritionRequest = NutritionRequest()
+
+        httpController.process(nutritionRequest) { result in
+            processedResult = result
+        }
+
+        switch processedResult {
+        case .success:
+            XCTFail("Success result received by should have been Bad Request")
+        case .failure(let error):
+            XCTAssertEqual(error, .badRequest)
+        case .none:
+            XCTFail("Empty failure received by should have been Bad Request")
+        }
+    }
+
 }

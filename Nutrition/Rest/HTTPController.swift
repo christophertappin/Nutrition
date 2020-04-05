@@ -10,6 +10,7 @@ import Foundation
 
 enum HTTPError: Error {
     case genericError
+    case badRequest
 }
 
 protocol HTTPURLSession {
@@ -45,6 +46,18 @@ class HTTPController: HTTPControllerProtocol {
         where T: Request {
 
             session.urlDataTask(with: request.url) { data, response, _ in
+                if let response = response as? HTTPURLResponse {
+                    guard 200...299 ~= response.statusCode else {
+                        switch response.statusCode {
+                        case 400:
+                            completion(.failure(.badRequest))
+                        default:
+                            completion(.failure(.genericError))
+                        }
+
+                        return
+                    }
+                }
                 if let data = data {
                     guard let responseObject = request.response(data: data) else {
                         return
