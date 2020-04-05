@@ -17,6 +17,7 @@
 		E77D01CF243A19C90094A3EB /* HTTPControllerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77D01CE243A19C90094A3EB /* HTTPControllerTests.swift */; };
 		E77D01D1243A19DD0094A3EB /* HTTPController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77D01D0243A19DD0094A3EB /* HTTPController.swift */; };
 		E77D01D5243A1CD00094A3EB /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77D01D4243A1CD00094A3EB /* Requests.swift */; };
+		E77D01D8243A26F80094A3EB /* NutritionApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E77D01D7243A26F80094A3EB /* NutritionApiService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +45,7 @@
 		E77D01CE243A19C90094A3EB /* HTTPControllerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPControllerTests.swift; sourceTree = "<group>"; };
 		E77D01D0243A19DD0094A3EB /* HTTPController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPController.swift; sourceTree = "<group>"; };
 		E77D01D4243A1CD00094A3EB /* Requests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
+		E77D01D7243A26F80094A3EB /* NutritionApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionApiService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,6 +87,8 @@
 		E77D01AA243A19180094A3EB /* Nutrition */ = {
 			isa = PBXGroup;
 			children = (
+				E77D01D9243A2C730094A3EB /* NutritionViewModule */,
+				E77D01D6243A26B20094A3EB /* Services */,
 				E77D01D3243A1A7C0094A3EB /* Rest */,
 				E77D01AB243A19180094A3EB /* AppDelegate.swift */,
 				E77D01AD243A19180094A3EB /* SceneDelegate.swift */,
@@ -122,6 +126,21 @@
 				E77D01D4243A1CD00094A3EB /* Requests.swift */,
 			);
 			path = Rest;
+			sourceTree = "<group>";
+		};
+		E77D01D6243A26B20094A3EB /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				E77D01D7243A26F80094A3EB /* NutritionApiService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		E77D01D9243A2C730094A3EB /* NutritionViewModule */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = NutritionViewModule;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -247,6 +266,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E77D01B0243A19180094A3EB /* ViewController.swift in Sources */,
+				E77D01D8243A26F80094A3EB /* NutritionApiService.swift in Sources */,
 				E77D01AC243A19180094A3EB /* AppDelegate.swift in Sources */,
 				E77D01AE243A19180094A3EB /* SceneDelegate.swift in Sources */,
 				E77D01D5243A1CD00094A3EB /* Requests.swift in Sources */,

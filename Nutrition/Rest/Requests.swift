@@ -8,18 +8,43 @@
 
 import Foundation
 
+enum LifesumAPI {
+    static let scheme = "https"
+    static let host = "api.lifesum.com"
+    static let path = "v2/foodipedia/codetest"
+}
+
 protocol Request {
     associatedtype ResponseType: Decodable
 
     var url: URL { get }
+    var path: String { get }
+    var queryItems: [URLQueryItem] { get }
 
     func response(data: Data) -> ResponseType?
+}
+
+extension Request {
+    var url: URL {
+        var urlComponents = URLComponents()
+        urlComponents.scheme = LifesumAPI.scheme
+        urlComponents.host = LifesumAPI.host
+        urlComponents.path = path
+        urlComponents.queryItems = queryItems
+
+        return urlComponents.url!
+    }
 }
 
 struct NutritionRequest: Request {
     typealias ResponseType = NutritionResponse
 
-    var url: URL = URL(string: "http://sample.url")!
+    var path = "/v2/foodipedia/codetest"
+    var queryItems: [URLQueryItem] = []
+
+    init(foodId: Int) {
+        queryItems.append(URLQueryItem(name: "foodid", value: String(foodId)))
+    }
 
     func response(data: Data) -> NutritionResponse? {
         let response = try? JSONDecoder().decode(NutritionResponseWrapper.self, from: data)
