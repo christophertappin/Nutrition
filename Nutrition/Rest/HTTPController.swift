@@ -13,6 +13,7 @@ enum HTTPError: Error {
     case transmissionFailure
     case badRequest
     case notFound
+    case responseError
 }
 
 protocol HTTPURLSession {
@@ -67,9 +68,10 @@ class HTTPController: HTTPControllerProtocol {
                         return
                     }
                 }
-                
+
                 if let data = data {
                     guard let responseObject = request.response(data: data) else {
+                        completion(.failure(.responseError))
                         return
                     }
                     completion(.success(responseObject))

@@ -168,4 +168,60 @@ class HTTPControllerTests: XCTestCase {
         }
     }
 
+    func testOtherFailureReasons() {
+        let sessionMock = URLSessionMock()
+        sessionMock.response = HTTPURLResponse(url: URL(string: "http://test.url")!,
+                                               statusCode: 500,
+                                               httpVersion: nil,
+                                               headerFields: nil)
+
+        let httpController = HTTPController(session: sessionMock)
+
+        var processedResult: Result<NutritionRequest.ResponseType, HTTPError>?
+
+        let nutritionRequest = NutritionRequest()
+
+        httpController.process(nutritionRequest) { result in
+            processedResult = result
+        }
+
+        switch processedResult {
+        case .success:
+            XCTFail("Success result received by should have been generic error")
+        case .failure(let error):
+            XCTAssertEqual(error, .genericError)
+        case .none:
+            XCTFail("Empty failure received by should have been generic error")
+        }
+    }
+
+    func testResponseDecodeFailure() {
+        let sessionMock = URLSessionMock()
+        sessionMock.data = "{ \"some\": \"illegal\", \"json\": \"data\" }".data(using: .utf8)
+
+        sessionMock.response = HTTPURLResponse(url: URL(string: "http://test.url")!,
+                                               statusCode: 200,
+                                               httpVersion: nil,
+                                               headerFields: nil)
+
+        let httpController = HTTPController(session: sessionMock)
+
+        var processedResult: Result<NutritionRequest.ResponseType, HTTPError>?
+
+        let nutritionRequest = NutritionRequest()
+
+        httpController.process(nutritionRequest) { result in
+            processedResult = result
+        }
+
+        switch processedResult {
+        case .success:
+            XCTFail("Success result received by should have been a transmission error")
+        case .failure(let error):
+            XCTAssertEqual(error, .responseError)
+        case .none:
+            XCTFail("Empty failure received by should have been a transmission error")
+        }
+    }
+
 }
