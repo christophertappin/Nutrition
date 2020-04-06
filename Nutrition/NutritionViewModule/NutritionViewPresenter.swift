@@ -18,6 +18,7 @@ protocol NutritionViewPresenterProtocol {
     func proteinValue() -> String
     func calorieValue() -> String
     func load()
+    func macroValues() -> [String: Float]
 
 }
 
@@ -53,8 +54,16 @@ class NutritionViewPresenter: NutritionViewPresenterProtocol {
         return String(response?.calories ?? 0)
     }
 
+//    private func totalMacros() -> Float {
+//        return response?.protein
+//    }
+
     func load() {
         interactor?.loadRandomResult()
+    }
+
+    func macroValues() -> [String: Float] {
+        return ["carbs": (response?.carbs ?? 0.0), "protein": (response?.protein ?? 0.0), "fat": (response?.fat ?? 0.0)]
     }
 
 }
