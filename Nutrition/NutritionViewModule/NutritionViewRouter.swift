@@ -14,7 +14,8 @@ protocol NutritionViewRouterProtocol {
 
 class NutritionViewRouter: NutritionViewRouterProtocol {
     static func create() -> UIViewController? {
-        let viewController = UIStoryboard(name: "Main", bundle: Bundle.main).instantiateInitialViewController() as? NutritionViewController
+        let storyBoard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let viewController = storyBoard.instantiateInitialViewController() as? NutritionViewController
         let presenter = NutritionViewPresenter()
         presenter.view = viewController
 

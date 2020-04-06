@@ -9,7 +9,6 @@
 import UIKit
 
 protocol NutritionViewControllerProtocol {
-
     func fetchItemSuccess()
     func fetchItemFailure()
 }
@@ -45,11 +44,11 @@ class NutritionViewController: UIViewController {
     }
 
     func setupView() {
-        self.titleLabel.text = presenter?.title()
-        self.carbValueLabel.text = presenter?.carbValue()
-        self.proteinValueLabel.text = presenter?.proteinValue()
-        self.fatValueLabel.text = presenter?.fatValue()
-        self.calorieValueLabel.text = presenter?.calorieValue()
+        self.titleLabel.text = presenter?.title
+        self.carbValueLabel.text = presenter?.carbValue
+        self.proteinValueLabel.text = presenter?.proteinValue
+        self.fatValueLabel.text = presenter?.fatValue
+        self.calorieValueLabel.text = presenter?.calorieValue
         drawMacroChart(values: presenter?.macroValues().mapValues { value in
             CGFloat(value)
             } ?? [:])
@@ -103,7 +102,12 @@ extension NutritionViewController: NutritionViewControllerProtocol {
     }
 
     func fetchItemFailure() {
-        // TODO: Show dialog
+        let alertController = UIAlertController(title: "An Error Occured",
+                                                message: "An error occured getting results",
+                                                preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+
+        present(alertController, animated: true, completion: nil)
     }
 
 }

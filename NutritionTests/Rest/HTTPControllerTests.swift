@@ -18,7 +18,7 @@ class HTTPControllerTests: XCTestCase {
         var response: URLResponse?
         var error: Error?
 
-        func urlDataTask(with url: URL, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
+        func urlDataTask(with request: URLRequest, completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
             completionHandler(data, response, error)
         }
 
@@ -80,14 +80,13 @@ class HTTPControllerTests: XCTestCase {
 
         var processedResult: Result<NutritionRequest.ResponseType, HTTPError>?
 
-        let nutritionRequest = NutritionRequest()
+        let nutritionRequest = NutritionRequest(foodId: 1)
 
         httpController.process(nutritionRequest) { result in
             processedResult = result
         }
 
         XCTAssertEqual(expectedResponse.title, try? processedResult?.get().title)
-        // TODO: test the rest to make sure this really is the correct result
     }
 
     func testTransmissionFailure() {
@@ -98,7 +97,7 @@ class HTTPControllerTests: XCTestCase {
 
         var processedResult: Result<NutritionRequest.ResponseType, HTTPError>?
 
-        let nutritionRequest = NutritionRequest()
+        let nutritionRequest = NutritionRequest(foodId: 1)
 
         httpController.process(nutritionRequest) { result in
             processedResult = result
@@ -125,7 +124,7 @@ class HTTPControllerTests: XCTestCase {
 
         var processedResult: Result<NutritionRequest.ResponseType, HTTPError>?
 
-        let nutritionRequest = NutritionRequest()
+        let nutritionRequest = NutritionRequest(foodId: 1)
 
         httpController.process(nutritionRequest) { result in
             processedResult = result
@@ -152,7 +151,7 @@ class HTTPControllerTests: XCTestCase {
 
         var processedResult: Result<NutritionRequest.ResponseType, HTTPError>?
 
-        let nutritionRequest = NutritionRequest()
+        let nutritionRequest = NutritionRequest(foodId: 1)
 
         httpController.process(nutritionRequest) { result in
             processedResult = result
@@ -179,7 +178,7 @@ class HTTPControllerTests: XCTestCase {
 
         var processedResult: Result<NutritionRequest.ResponseType, HTTPError>?
 
-        let nutritionRequest = NutritionRequest()
+        let nutritionRequest = NutritionRequest(foodId: 1)
 
         httpController.process(nutritionRequest) { result in
             processedResult = result
@@ -208,7 +207,7 @@ class HTTPControllerTests: XCTestCase {
 
         var processedResult: Result<NutritionRequest.ResponseType, HTTPError>?
 
-        let nutritionRequest = NutritionRequest()
+        let nutritionRequest = NutritionRequest(foodId: 1)
 
         httpController.process(nutritionRequest) { result in
             processedResult = result

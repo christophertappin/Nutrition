@@ -12,11 +12,12 @@ protocol NutritionViewPresenterProtocol {
     var view: NutritionViewControllerProtocol? { get set }
     var interactor: NutritionViewInteractorProtocol? { get set }
 
-    func title() -> String
-    func carbValue() -> String
-    func fatValue() -> String
-    func proteinValue() -> String
-    func calorieValue() -> String
+    var title: String { get }
+    var carbValue: String { get }
+    var fatValue: String { get }
+    var proteinValue: String { get }
+    var calorieValue: String { get }
+
     func load()
     func macroValues() -> [String: Float]
 
@@ -34,29 +35,45 @@ class NutritionViewPresenter: NutritionViewPresenterProtocol {
 
     var response: NutritionResponse?
 
-    func title() -> String {
+    var title: String {
         return response?.title ?? ""
     }
 
-    func carbValue() -> String {
-        return String(response?.carbs ?? 0.0)
+    private var totalMacros: Float {
+        let carbs: Float = response?.carbs ?? 0.0
+        let fat: Float = response?.fat ?? 0.0
+        let protein: Float = response?.protein ?? 0.0
+
+        return carbs + fat + protein
     }
 
-    func fatValue() -> String {
-        return String(response?.fat ?? 0.0)
+    var carbValue: String {
+        guard totalMacros != 0 else {
+                return ""
+        }
+        let carbPercentage = (response?.carbs ?? 0.0) / totalMacros * 100
+        return String(format: "%.1f%%", carbPercentage)
     }
 
-    func proteinValue() -> String {
-        return String(response?.protein ?? 0.0)
+    var fatValue: String {
+        guard totalMacros != 0 else {
+                return ""
+        }
+        let carbPercentage = (response?.fat ?? 0.0) / totalMacros * 100
+        return String(format: "%.1f%%", carbPercentage)
     }
 
-    func calorieValue() -> String {
+    var proteinValue: String {
+        guard totalMacros != 0 else {
+                return ""
+        }
+        let carbPercentage = (response?.protein ?? 0.0) / totalMacros * 100
+        return String(format: "%.1f%%", carbPercentage)
+    }
+
+    var calorieValue: String {
         return String(response?.calories ?? 0)
     }
-
-//    private func totalMacros() -> Float {
-//        return response?.protein
-//    }
 
     func load() {
         interactor?.loadRandomResult()
