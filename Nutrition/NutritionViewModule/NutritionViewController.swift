@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol NutritionViewControllerProtocol {
+protocol NutritionViewControllerProtocol: class {
     func fetchItemSuccess()
     func fetchItemFailure()
 }

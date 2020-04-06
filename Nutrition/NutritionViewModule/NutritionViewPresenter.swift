@@ -23,13 +23,13 @@ protocol NutritionViewPresenterProtocol {
 
 }
 
-protocol NutritionViewEventProtocol {
+protocol NutritionViewEventProtocol: class {
     func resultSuccess(response: NutritionResponse)
     func resultFailure()
 }
 
 class NutritionViewPresenter: NutritionViewPresenterProtocol {
-    var view: NutritionViewControllerProtocol?
+    weak var view: NutritionViewControllerProtocol?
 
     var interactor: NutritionViewInteractorProtocol?
 

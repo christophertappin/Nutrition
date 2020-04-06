@@ -16,7 +16,7 @@ protocol NutritionViewInteractorProtocol {
 
 class NutritionViewInteractor: NutritionViewInteractorProtocol {
 
-    var presenter: NutritionViewEventProtocol?
+    weak var presenter: NutritionViewEventProtocol?
 
     var nutritionApiService: NutritionAPIServiceProtocol?
 
